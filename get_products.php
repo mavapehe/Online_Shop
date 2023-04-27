@@ -2,13 +2,18 @@
 require 'db-connection.php';
 
 if (isset($_GET['ids'])) {
-    $ids = implode(',', array_map('intval', explode(',', $_GET['ids'])));
-    $sql = "SELECT id, name, price, image FROM products WHERE id IN ($ids)";
-    $result = $conn->query($sql);
+    $ids = array_map('intval', explode(',', $_GET['ids']));
+    $placeholders = implode(',', array_fill(0, count($ids), '?'));
+    $sql = "SELECT id, name, price, image FROM products WHERE id IN ($placeholders)";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($ids);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
     $products = [];
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
+    if ($result) {
+        foreach ($result as $row) {
             $products[] = [
                 'id' => $row['id'],
                 'name' => $row['name'],
@@ -18,7 +23,7 @@ if (isset($_GET['ids'])) {
         }
     }
 
-    $conn->close();
+    $conn = null;
 
     header('Content-Type: application/json');
     echo json_encode($products);
@@ -26,3 +31,4 @@ if (isset($_GET['ids'])) {
     header('HTTP/1.1 400 Bad Request');
     die('Missing required parameter "ids"');
 }
+
