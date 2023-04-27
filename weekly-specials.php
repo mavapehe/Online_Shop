@@ -28,16 +28,20 @@ require_once('back-button.php')
     <h2>Weekly Specials</h2>
     <div class="products-grid">
 
-        <?php
-        require 'db-connection.php';
+<?php
+require 'db-connection.php';
 
-        $sql = "SELECT id, name, price, quantity, image FROM products ORDER BY RAND() LIMIT 10";
+$sql = "SELECT id, name, price, quantity, image FROM products_db ORDER BY RAND() LIMIT 10";
 
-        $result = $conn->query($sql);
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetchAll();
 
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-        ?>
+if (!empty($result)) {
+    foreach($result as $row) {
+?>
+        
+        
         <a href="product.php?id=<?php echo $row['id']; ?>" class="product-link">
             <div class="product-item">
             <img src="/<?php echo $row["image"]; ?>" alt="<?php echo $row["name"]; ?>">
@@ -54,7 +58,6 @@ require_once('back-button.php')
         } else {
             echo "No products found.";
         }
-        $conn->close();
         ?>
 
     </div>
