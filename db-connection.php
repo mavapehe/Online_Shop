@@ -1,11 +1,11 @@
 <?php
-$servername = "containers-us-west-148.railway.app";
-$username = "root";
-$password = "UOvUUOX46PGiKmDe43Y8";
-$dbname = "products_db";
-$port = 6272;
+$host = 'containers-us-west-148.railway.app';
+$port = '6272';
+$user = 'root';
+$password = 'UOvUUOX46PGiKmDe43Y8';
+$database = 'products_db';
 
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+$conn = new mysqli($host, $user, $port, $password, $database);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
