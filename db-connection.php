@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost";
+$servername = "railway";
 $username = "root";
-$password = "";
+$password = "UOvUUOX46PGiKmDe43Y8";
 $dbname = "products_db";
 
 
