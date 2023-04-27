@@ -2,7 +2,7 @@
 $servername = "containers-us-west-148.railway.app";
 $username = "root";
 $password = "UOvUUOX46PGiKmDe43Y8";
-$dbname = "products_db";
+$dbname = "railway";
 $port = 6272;
 
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
