@@ -1,0 +1,13 @@
+#back-button {
+    cursor: pointer;
+    color: #40AA54;
+    font-family: 'Montserrat-Medium';
+    padding-right:70px;
+    padding-left:70px;
+
+}
+#back-button :hover {
+    cursor: pointer;
+    color: #2A863C;
+    font-family: 'Montserrat-Medium';
+}

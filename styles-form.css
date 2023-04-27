@@ -1,0 +1,150 @@
+@font-face {
+    font-family: "Montserrat-Medium";
+    src: url("fonts/Montserrat-Medium.ttf");
+}
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url("fonts/Montserrat-Bold.ttf");
+}
+ @font-face {
+    font-family: "Montserrat-Black";
+    src: url("fonts/Montserrat-Black.ttf");
+}
+@font-face {
+    font-family: "Montserrat-Semibold";
+    src: url("fonts/Montserrat-SemiBold.ttf");
+}
+@font-face {
+    font-family: "Montserrat-Regular";
+    src: url("fonts/Montserrat-Regular.ttf");
+  }
+@font-face {
+    font-family: "Montserrat-Extrabold";
+    src: url("fonts/Montserrat-Extrabold.ttf");
+}
+
+
+
+
+
+.form-container {
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    max-width: 90%;
+}
+
+form {
+width: 100%;
+}
+
+.form-container h6 {
+    font-family: "Montserrat-Semibold";
+    font-size: 22px;
+    color: #4F4F4F;
+    width: 100%;
+    height:40px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.form-container input,
+.form-container select {
+    background-color: #FFFFFF;
+    border-radius: 55px;
+    padding: 16px;
+    font-size: 14px;
+    color: #666666;
+    font-family: "Montserrat-Regular";
+    border: none;
+    margin-bottom: 10px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"],
+.form-container select {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.form-container input:last-child,
+.form-container select:last-child {
+    margin-right: 0;
+}
+
+.form-container select {
+    cursor: pointer;
+    border-right: 16px solid transparent;
+}
+
+.row:last-child {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+ p{
+    font-size: 15px;
+    padding-left: 19px;
+    text-align: justify;
+    color: #4F4F4F;
+    font-family: "Montserrat-regular";
+    }
+
+#submit_button{
+    padding: 8px 20px 8px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #40AA54;
+    font-family: 'Montserrat-Semibold';
+    color: #ffffff;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+#submit_button:hover {
+    background-color: #2A863C;
+}
+
+#submit_button:disabled {
+    background-color: #EBEBEB;
+    cursor:default;
+ }
+
+ label.required::before {
+    content: "*";
+    color: red;
+    position: absolute;
+    margin-left: 5px;
+    margin-top:-20px;
+}
+
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Customize the scrollbar track */
+  ::-webkit-scrollbar-track {
+    background: #c4ffce;
+    border-radius: 10px;
+  }
+  
+  /* Customize the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background: #88d095;
+    border-radius: 10px;
+  }
+  
+  /* Customize the scrollbar thumb when hovered */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #157a2c;
+  }

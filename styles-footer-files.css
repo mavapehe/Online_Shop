@@ -1,0 +1,47 @@
+.text-container{
+    padding: 90px;
+}
+
+.text-container h1{
+    font-family: 'Montserrat-Bold';
+    font-size: 28px;
+    color: #4F4F4F;
+
+}
+
+.text-container p{
+font-size: 15px;
+text-align: justify;
+color: #4F4F4F;
+font-family: "Montserrat-regular";
+}
+
+.text-container ul li, .text-container ol li{
+    font-size: 15px;
+    text-align: justify;
+    color: #4F4F4F;
+    font-family: "Montserrat-regular";
+    }
+
+
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Customize the scrollbar track */
+  ::-webkit-scrollbar-track {
+    background: #c4ffce;
+    border-radius: 10px;
+  }
+  
+  /* Customize the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background: #88d095;
+    border-radius: 10px;
+  }
+  
+  /* Customize the scrollbar thumb when hovered */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #157a2c;
+  }
