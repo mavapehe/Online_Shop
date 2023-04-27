@@ -39,7 +39,7 @@ require_once('back-button.php')
         <?php
 require 'db-connection.php';
 
-$sql = "SELECT id, name, price, quantity, image FROM products_db WHERE id IN (8001, 8002, 8003, 8004)";
+$sql = "SELECT id, name, price, quantity, image FROM products_db WHERE id IN (4001, 4002, 4003, 4004)";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
