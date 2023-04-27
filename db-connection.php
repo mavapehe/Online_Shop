@@ -1,6 +1,6 @@
 <?php
 $host = 'containers-us-west-148.railway.app';
-$port = '6272';
+$port = 6272;
 $user = 'root';
 $password = 'UOvUUOX46PGiKmDe43Y8';
 $database = 'products_db';
