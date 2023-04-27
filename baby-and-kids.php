@@ -27,25 +27,17 @@ require_once('search-header.php')
 </div>
 
 <?php
-require_once('back-button.php')
+require 'db-connection.php';
+
+$sql = "SELECT id, name, price, quantity, image FROM products_db WHERE id IN (8001, 8002, 8003, 8004)";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetchAll();
+
+if (!empty($result)) {
+    foreach($result as $row) {
 ?>
-
-<!-- Popular products -->
-<div id="message-container"></div>
-<div class="popular-products">
-    <h2>Baby & kids</h2>
-    <div class="products-grid">
-
-        <?php
-        require 'db-connection.php';
-
-        $sql = "SELECT id, name, price, quantity, image FROM products WHERE id IN (8001, 8002, 8003, 8004)";
-
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-        ?>
         <a href="product.php?id=<?php echo $row['id']; ?>" class="product-link">
             <div class="product-item">
             <img src="/<?php echo $row["image"]; ?>" alt="<?php echo $row["name"]; ?>">
@@ -57,13 +49,13 @@ require_once('back-button.php')
                 <img class="product-button" src="png_materials/icon_add.png" alt="add" data-id="<?php echo $row['id']; ?>">
             </div>
             </a>
-        <?php
-            }
-        } else {
-            echo "No products found.";
-        }
-        $conn->close();
-        ?>
+<?php
+    }
+} else {
+    echo "No products found.";
+}
+?>
+
 
     </div>
 </div>
