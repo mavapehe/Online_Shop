@@ -59,10 +59,12 @@
 
         $sql = "SELECT id, name, price, quantity, image FROM products_db WHERE id IN (1001, 2001, 3001, 4001, 5001, 6001, 7001, 8001, 1002, 2002, 3002, 4002, 5002, 6002, 7002)";
 
-        $result = $conn->query($sql);
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
 
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
+        if (!empty($result)) {
+            foreach($result as $row) {
         ?>
         <a href="product.php?id=<?php echo $row['id']; ?>" class="product-link">
             <div class="product-item">
@@ -80,8 +82,11 @@
         } else {
             echo "No products found.";
         }
-        $conn->close();
         ?>
+
+    </div>
+</div>
+
 
     </div>
 </div>
