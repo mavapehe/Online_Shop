@@ -6,7 +6,7 @@ if (isset($_GET['ids'])) {
     $placeholders = implode(',', array_fill(0, count($ids), '?'));
     $sql = "SELECT id, name, price, image FROM products WHERE id IN ($placeholders)";
     
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->execute($ids);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
@@ -23,7 +23,7 @@ if (isset($_GET['ids'])) {
         }
     }
 
-    $conn = null;
+    $pdo = null;
 
     header('Content-Type: application/json');
     echo json_encode($products);
