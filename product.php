@@ -14,7 +14,7 @@
   require 'db-connection.php';
 
   $id = $_GET["id"];
-  $sql = "SELECT id, name, price, quantity, description, image FROM products WHERE id = :id";
+  $sql = "SELECT id, name, price, quantity, description, image FROM products_db WHERE id = :id";
   
   $stmt = $pdo->prepare($sql);
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -35,6 +35,7 @@
       $product = null;
   }
 ?>
+
 
 <!-- Header -->
 <?php
