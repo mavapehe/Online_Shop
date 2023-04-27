@@ -11,38 +11,29 @@
 <body style="background-color:#F5F5F5;">
 
 <?php
-  $product_id = $_GET['id'];
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "products_db";
+  require 'db-connection.php';
 
-
-  $conn = new mysqli($servername, $username, $password, $dbname);
-
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-  }
-  
   $id = $_GET["id"];
-  $sql = "SELECT id, name, price, quantity, description, image FROM products WHERE id = '$id'";
+  $sql = "SELECT id, name, price, quantity, description, image FROM products WHERE id = :id";
   
-  $result = $conn->query($sql);
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
   
-  if ($result->num_rows > 0) {
-      $row = $result->fetch_assoc();
+  if (!empty($result)) {
+      $row = $result[0];
       $product = [
           "id" => $row["id"],
           "name" => $row["name"],
           "price" => $row["price"],
           "quantity" => $row["quantity"],
-          "description" => $row["description"]
+          "description" => $row["description"],
+          "image" => $row["image"]
       ];
   } else {
       $product = null;
   }
-  
-  $conn->close();
 ?>
 
 <!-- Header -->
