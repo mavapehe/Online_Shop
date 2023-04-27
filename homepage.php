@@ -57,7 +57,7 @@
         <?php
         require 'db-connection.php';
 
-        $sql = "SELECT id, name, price, quantity, image FROM db_products WHERE id IN (1001, 2001, 3001, 4001, 5001, 6001, 7001, 8001, 1002, 2002, 3002, 4002, 5002, 6002, 7002)";
+        $sql = "SELECT id, name, price, quantity, image FROM products_db WHERE id IN (1001, 2001, 3001, 4001, 5001, 6001, 7001, 8001, 1002, 2002, 3002, 4002, 5002, 6002, 7002)";
 
         $result = $conn->query($sql);
 
