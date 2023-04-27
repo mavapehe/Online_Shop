@@ -2,29 +2,20 @@
 error_reporting(E_ERROR | E_PARSE);
 header("Content-Type: application/json");
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "products_db";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require 'db-connection.php';
 
 $query = $_GET["query"];
-$sql = "SELECT id, name FROM products WHERE name LIKE ?";
-$stmt = $conn->prepare($sql);
+$sql = "SELECT id, name FROM products_db WHERE name LIKE ?";
+$stmt = $pdo->prepare($sql);
 $param = "%" . $query . "%";
-$stmt->bind_param("s", $param);
+$stmt->bindParam(1, $param);
 $stmt->execute();
 
-$result = $stmt->get_result();
+$result = $stmt->fetchAll();
 
-if ($result->num_rows > 0) {
+if (!empty($result)) {
     $output = [];
-    while ($row = $result->fetch_assoc()) {
+    foreach ($result as $row) {
         $output[] = ["id" => $row["id"], "name" => $row["name"]];
     }
     echo json_encode($output);
@@ -32,6 +23,6 @@ if ($result->num_rows > 0) {
     echo json_encode([]);
 }
 
-$stmt->close();
-$conn->close();
+$stmt = null;
+$pdo = null;
 ?>
