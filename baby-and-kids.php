@@ -27,6 +27,16 @@ require_once('search-header.php')
 </div>
 
 <?php
+require_once('back-button.php')
+?>
+
+<!-- Popular products -->
+<div id="message-container"></div>
+<div class="popular-products">
+    <h2>Baby & kids</h2>
+    <div class="products-grid">
+
+<?php
 require 'db-connection.php';
 
 $sql = "SELECT id, name, price, quantity, image FROM products_db WHERE id IN (8001, 8002, 8003, 8004)";
