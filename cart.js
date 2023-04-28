@@ -24,7 +24,6 @@ function getCartFromLocalStorage() {
 async function fetchProductDetails(productIds) {
     const response = await fetch(`get_products.php?ids=${productIds.join(',')}`);
     const products = await response.json();
-    console.log(products); // Add this line to log the products to the console
     return products;
 }
 function displayCartItems(products, cart) {
