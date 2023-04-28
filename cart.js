@@ -5,15 +5,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     displayCartItems(products, cart);
     displayCartSummary(products, cart);
 
+    // Add event listener for 'Clear Cart' button
+    document.getElementById('clear-cart-btn').addEventListener('click', () => {
+        clearCart();
+        displayCartItems([], {}); // Clear the cart items display
+        displayCartSummary([], {}); // Clear the cart summary
+        updateCartDisplay(); // Update the button
+    });
 
-        // Add event listener for 'Clear Cart' button
-        document.getElementById('clear-cart-btn').addEventListener('click', () => {
-            clearCart();
-            displayCartItems([], {}); // Clear the cart items display
-            displayCartSummary([], {}); // Clear the cart summary
-            updateCartDisplay(); // Update the button
-        });
-
+    // Add event listener for the 'Checkout' button
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+        if (Object.keys(cart).length > 0) {
+            window.location.href = 'form.php';
+        }
+    });
 });
 
 function getCartFromLocalStorage() {
