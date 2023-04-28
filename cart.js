@@ -67,9 +67,11 @@ function displayCartItems(products, cart) {
             const updatedCart = getCartFromLocalStorage(); // Get the updated cart
             displayCartItems(products, updatedCart); // Update the cart items display
             displayCartSummary(products, updatedCart); // Update the cart summary
-        });
+            
+        // Adding this line to call updateCartDisplay() after adding an item to the cart
+        updateCartDisplay();
     });
-
+});
     // Event listeners for remove buttons
     const removeButtons = document.querySelectorAll('.remove-item');
     removeButtons.forEach(button => {
@@ -92,8 +94,9 @@ function displayCartItems(products, cart) {
             updateCartDisplay(); // Update the button
         });
     });
+    // Adding this line to call updateCartDisplay() after updating the cart items display
+    updateCartDisplay();
 }
-
 
 function removeFromCart(productId) {
     const cart = getCartFromLocalStorage();
