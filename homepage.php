@@ -94,11 +94,11 @@
 <!-- Add button Javascript-->
 
 <script>
-document.querySelectorAll('.product-button').forEach(button => {
-  button.addEventListener('click', event => {
+document.querySelectorAll('.product-link').forEach(link => {
+  link.addEventListener('click', event => {
     event.preventDefault(); // Prevent navigating to the product page
 
-    const productId = event.target.getAttribute('data-id');
+    const productId = event.currentTarget.querySelector('.product-button').getAttribute('data-id');
     addToCart(productId);
   });
 });
