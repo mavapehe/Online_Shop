@@ -74,7 +74,8 @@
                     <p class="product-quantity"><?php echo $row["quantity"]; ?></p>
                     <p class="product-price">$<?php echo $row["price"]; ?></p>
                 </div>
-                <img class="product-button" src="png_materials/icon_add.png" alt="add" data-id="<?php echo $row['id']; ?>">
+                <button class="product-button" data-id="<?php echo $row['id']; ?>">Add to cart</button>
+
             </div>
             </a>
         <?php
@@ -94,11 +95,11 @@
 <!-- Add button Javascript-->
 
 <script>
-document.querySelectorAll('.product-link').forEach(link => {
-  link.addEventListener('click', event => {
+document.querySelectorAll('.product-button').forEach(button => {
+  button.addEventListener('click', event => {
     event.preventDefault(); // Prevent navigating to the product page
 
-    const productId = event.currentTarget.querySelector('.product-button').getAttribute('data-id');
+    const productId = event.target.getAttribute('data-id');
     addToCart(productId);
   });
 });
