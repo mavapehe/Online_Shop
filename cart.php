@@ -49,27 +49,31 @@ require_once('back-button.php')
         updateCartDisplay();
     });
 
-    function updateCartDisplay() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+function updateCartDisplay() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-        const totalItems = Object.values(cart).reduce((total, quantity) => total + quantity, 0);
-        const totalPrice = Object.entries(cart).reduce((total, [productId, quantity]) => {
-            const product = products.find(p => p.id === productId);
-            return total + (product.price * quantity);
-        }, 0);
+    const totalItems = Object.values(cart).reduce((total, quantity) => total + quantity, 0);
+    const totalPrice = Object.entries(cart).reduce((total, [productId, quantity]) => {
+        const product = products.find(p => p.id === productId);
+        return total + (product.price * quantity);
+    }, 0);
 
-        document.getElementById('total-items').textContent = totalItems;
-        document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+    document.getElementById('total-items').textContent = totalItems;
+    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
 
-        const checkoutBtn = document.getElementById('checkout-btn');
-        if (totalItems > 0) {
-            checkoutBtn.disabled = false;
-            checkoutBtn.style.backgroundColor = '#40AA54';
-        } else {
-            checkoutBtn.disabled = true;
-            checkoutBtn.style.backgroundColor = '#EBEBEB';
-        }
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (totalItems > 0) {
+        checkoutBtn.disabled = false;
+        checkoutBtn.style.backgroundColor = '#40AA54';
+    } else {
+        checkoutBtn.disabled = true;
+        checkoutBtn.style.backgroundColor = '#EBEBEB';
     }
+
+    // Update cart items display
+    displayCartItems(products, cart);
+}
+
 
     const checkoutBtn = document.getElementById('checkout-btn');
     if (checkoutBtn) {
