@@ -28,9 +28,15 @@ function getCartFromLocalStorage() {
 
 async function fetchProductDetails(productIds) {
     const response = await fetch(`get_products.php?ids=${productIds.join(',')}`);
-    const products = await response.json();
-    return products;
+    const fetchedProducts = await response.json();
+
+    // Map the fetched products' ids to integers
+    return fetchedProducts.map(product => {
+        product.id = parseInt(product.id, 10);
+        return product;
+    });
 }
+
 function displayCartItems(products, cart) {
     const cartItemsContainer = document.getElementById('cart-items');
     cartItemsContainer.innerHTML = ''; // Clear previous items
