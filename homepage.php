@@ -74,8 +74,7 @@
                     <p class="product-quantity"><?php echo $row["quantity"]; ?></p>
                     <p class="product-price">$<?php echo $row["price"]; ?></p>
                 </div>
-                <button class="product-button" data-id="<?php echo $row['id']; ?>">Add to cart</button>
-
+                <img class="product-button" src="png_materials/icon_add.png" alt="add" data-id="<?php echo $row['id']; ?>">
             </div>
             </a>
         <?php
